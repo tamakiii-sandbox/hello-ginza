@@ -12,8 +12,17 @@ RUN yum update -y && \
     yum clean all && \
     rm -rf /var/cache/yum/*
 
-# alternatives [options] --install link name path priority [--slave link name path]...  [--initscript service] [--family name]
-RUN alternatives --install /usr/bin/python python /usr/bin/python3 1
-RUN alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+# Because yum does not support Python3.
+# You can run command vi /usr/bin/yum, change /usr/bin/python to /usr/bin/python2 in first line.
+# # alternatives [options] --install link name path priority [--slave link name path]...  [--initscript service] [--family name]
+# RUN alternatives --install /usr/bin/python python /usr/bin/python3 1
+# RUN alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+# ```
+# bash-4.2# yum update -y
+#   File "/usr/bin/yum", line 30
+#       except KeyboardInterrupt, e:
+#                                   ^
+# 				  SyntaxError: invalid syntax
+# ```
 
 RUN pip3 install -U ginza ja_ginza_electra
