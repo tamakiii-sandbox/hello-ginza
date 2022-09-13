@@ -8,6 +8,7 @@ RUN yum update -y && \
       man \
       python3 \
       python3-pip \
+      libxml2 \
       && \
     yum clean all && \
     rm -rf /var/cache/yum/*
