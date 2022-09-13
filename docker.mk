@@ -11,8 +11,8 @@ install: \
 build:
 	docker build -t $(NAME) .
 
-bash:
-	docker run -it --rm $(NAME) $@
+bash: build
+	docker run -it --rm -v $(CURDIR):/work -w /work $(NAME) $@
 
 clean:
 	docker image rm $(NAME)
