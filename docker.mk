@@ -11,6 +11,9 @@ install: \
 build:
 	docker build -t $(NAME) .
 
+run:
+	docker run -it --rm -v $(CURDIR):/work -w /work $(NAME) make run
+
 bash: build
 	docker run -it --rm -v $(CURDIR):/work -w /work $(NAME) $@
 
