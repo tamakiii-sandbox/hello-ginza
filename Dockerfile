@@ -12,4 +12,8 @@ RUN yum update -y && \
     yum clean all && \
     rm -rf /var/cache/yum/*
 
+# alternatives [options] --install link name path priority [--slave link name path]...  [--initscript service] [--family name]
+RUN alternatives --install /usr/bin/python python /usr/bin/python3 1
+RUN alternatives --install /usr/bin/pip pip /usr/bin/pip3 1
+
 RUN pip3 install -U ginza ja_ginza_electra
